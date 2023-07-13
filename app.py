@@ -4,6 +4,14 @@ import streamlit as st
 import pandas as pd
 import requests
 
+hide = """
+<style>
+div[data-testid="stConnectionStatus"] {
+    display: none !important;
+</style>
+"""
+
+st.markdown(hide, unsafe_allow_html=True)
 st.set_page_config(
    page_title="Movie Recommender System App",
    page_icon="🧊",
