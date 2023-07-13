@@ -4,14 +4,6 @@ import streamlit as st
 import pandas as pd
 import requests
 
-hide = """
-<style>
-div[data-testid="stConnectionStatus"] {
-    display: none !important;
-</style>
-"""
-
-st.markdown(hide, unsafe_allow_html=True)
 st.set_page_config(
    page_title="Movie Recommender System App",
    page_icon="🧊",
@@ -27,6 +19,15 @@ st.title('Movie Recommender System')
 movies_dict = pickle.load(open('movie_dict.pkl','rb'))
 similarity = pickle.load(open('similarity.pkl','rb'))
 movies = pd.DataFrame (movies_dict)
+
+hide = """
+<style>
+div[data-testid="stConnectionStatus"] {
+    display: none !important;
+</style>
+"""
+
+st.markdown(hide, unsafe_allow_html=True)
 
 def fetch_poster(movie_id):
     response = requests.get('https://api.themoviedb.org/3/movie/{}?api_key=263cccc7902c444e5a0231f11b54d71f&language=en-US'.format(movie_id))
